@@ -5,18 +5,23 @@ const Block = styled.div`
   width: 100%;
   position: relative;
   margin-bottom: 34px;
-  background: #fff4f4;
+  background: rgba(245, 97, 97, 0.1);
   padding: 19px 30px 30px 30px;
   box-shadow: 3px 3px 0 0 #f5dbdb;
   border-radius: 5px;
   line-height: 18px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 
   a {
-    position: relative;
+    position: inline-block;
     text-decoration: none;
 
     &:hover::after {
-      position: absolute;
+      position: relative;
       width: 100%;
       height: 100%;
       top: 0;
@@ -27,21 +32,24 @@ const Block = styled.div`
       background: #ffffff;
     }
   }
+
   h2,
   p {
     line-height: 18px;
   }
   h2 {
     display: inline-block;
+    pointer-events: none;
+    padding-top: 10px;
+    font-size: 22px !important;
   }
   #mainHeader {
     &:after {
       content: "";
       width: 100%;
-      height: 3px;
-      margin-top: 4px;
       display: block;
       background: #f56161;
+      pointer-events: none;
     }
   }
 
@@ -58,9 +66,8 @@ const Block = styled.div`
 `;
 
 const Container = styled.div`
-  height: 93vh;
+  height: 60vh;
   width: 125vw;
-  background: #ffe7e7;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -122,7 +129,7 @@ const ALink = styled.a`
 
 const Separator = styled.div`
   height: 1px;
-  background-color: #f56161;
+  background-color: rgba(245, 97, 97, 0.5);
 `;
 
 const LinkWrapper = styled.a`
@@ -183,33 +190,25 @@ const SocialLinkWrapper = styled.div`
   position: relative;
   height: 24px;
   margin-bottom: 30px;
-  font-size: 14px;
-  font-weight: 500;
-  a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    color: #333740 !important;
+  font-size: 15px;
+
+  img,
+  span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  img {
+    height: 22px;
+    width: 22px;
+    object-fit: contain;
+  }
+  span {
+    width: calc(100% - 24px);
+    padding-left: 11px;
+    font-weight: 500;
+  }
+  &:hover {
     text-decoration: none;
-    line-height: 18px;
-    img,
-    span {
-      display: inline-block;
-      vertical-align: middle;
-    }
-    img {
-      height: 24px;
-      width: 24px;
-      object-fit: contain;
-    }
-    span {
-      width: calc(100% - 24px);
-      padding-left: 11px;
-      font-weight: 600;
-    }
-    &:hover {
-      text-decoration: none;
-    }
   }
 `;
 
@@ -220,6 +219,7 @@ const StyledLink = styled.a`
     transition: all 0.3s ease-in-out;
     text-decoration: none;
     cursor: pointer;
+  }
 `;
 
 export {

@@ -3,6 +3,8 @@ import PageTitle from "../../components/PageTitle";
 
 import { Block, Container, P, Separator, StyledLink } from "./components";
 import SocialLink from "./SocialLink";
+import { Header } from "@buffetjs/custom";
+import styled from "styled-components";
 
 const SOCIAL_LINKS = [
   {
@@ -15,15 +17,27 @@ const SOCIAL_LINKS = [
   },
 ];
 
+const TestWrap = styled.div`
+  padding: 18px 30px;
+`;
+
 const HomePage = () => {
   return (
     <>
       <PageTitle title={"Won Games"} />
+      <TestWrap>
+        <Header
+          title={{ label: "Won Games" }}
+          content="Welcome to Won Games, a e-commerce platform for gamers."
+          style={{ paddingTop: "200px" }}
+        />
+      </TestWrap>
       <Container className="container-fluid">
         <div className="row">
           <div className="col-lg-8 col-md-12">
             <Block>
-              <h2 id="mainHeader">Welcome to Won Games</h2>
+              <h2 id="mainHeader">Won Games admin panel</h2>
+              <Separator style={{ marginTop: 5 }} />
               <P>
                 On the left side you can add games, categories, developers,
                 platforms and publishers to our wonderful game shop!
@@ -31,18 +45,17 @@ const HomePage = () => {
             </Block>
           </div>
 
-          <div className="col-md-12 col-lg-8">
+          <div className="col-lg-8 col-md-12">
             <Block style={{ paddingRight: 30, paddingBottom: 0 }}>
               <h2 id="mainHeader">Social Media</h2>
+              <Separator style={{ marginTop: 5 }} />
               <P>You can find me in the social media links below.</P>
-
-              <Separator style={{ marginTop: 18 }} />
               <div
                 className="row social-wrapper"
                 style={{
                   display: "flex",
                   margin: 0,
-                  marginTop: 36,
+                  marginTop: 20,
                   marginLeft: -15,
                 }}
               >
@@ -55,6 +68,7 @@ const HomePage = () => {
           <div className="col-lg-8 col-md-12">
             <Block>
               <h2 id="mainHeader">About this website</h2>
+              <Separator style={{ marginTop: 5 }} />
               <P>
                 This is a website for the Won Games project. It is a content
                 management system for an online e-commerce website. The project

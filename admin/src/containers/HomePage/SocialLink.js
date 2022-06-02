@@ -3,30 +3,32 @@
  * SocialLink
  */
 
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import React, { memo } from "react";
+import PropTypes from "prop-types";
 
-import Gh from '../../assets/images/social_gh.png';
-import Discord from '../../assets/images/social_discord.png';
-import Twitter from '../../assets/images/social_twitter.png';
-import Reddit from '../../assets/images/social_reddit.png';
-import Strapi from '../../assets/images/social_strapi.png';
+import Gh from "../../assets/images/social_gh.png";
+import Discord from "../../assets/images/social_discord.png";
+import Twitter from "../../assets/images/social_twitter.png";
+import Reddit from "../../assets/images/social_reddit.png";
+import Strapi from "../../assets/images/social_strapi.png";
 
-import { SocialLinkWrapper } from './components';
+import { StyledLink } from "./components";
+
+import { SocialLinkWrapper } from "./components";
 
 function getSrc(name) {
   switch (name) {
-    case 'GitHub':
+    case "GitHub":
       return Gh;
-    case 'Reddit':
+    case "Reddit":
       return Reddit;
-    case 'Discord':
+    case "Discord":
       return Discord;
-    case 'Twitter':
+    case "Twitter":
       return Twitter;
-    case 'Blog':
-    case 'Forum':
-    case 'Careers':
+    case "Blog":
+    case "Forum":
+    case "Careers":
       return Strapi;
     default:
       return Strapi;
@@ -36,10 +38,10 @@ function getSrc(name) {
 const SocialLink = ({ link, name }) => {
   return (
     <SocialLinkWrapper className="col-6">
-      <a href={link} target="_blank" rel="noopener noreferrer">
+      <StyledLink href={link} target="_blank" rel="noopener noreferrer">
         <img src={getSrc(name)} alt={name} />
         <span>{name}</span>
-      </a>
+      </StyledLink>
     </SocialLinkWrapper>
   );
 };
