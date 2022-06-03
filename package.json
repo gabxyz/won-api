@@ -11,6 +11,8 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "@apollo/client": "^3.6.6",
+    "graphql": "^16.5.0",
     "jsdom": "^19.0.0",
     "knex": "0.21.18",
     "pg": "8.5.1",
