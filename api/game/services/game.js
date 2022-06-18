@@ -159,7 +159,7 @@ async function createGames(products) {
 module.exports = {
   populate: async (params) => {
     try {
-      const gogApiUrl = `https://www.gog.com/games/ajax/filtered?mediaType=game&${qs.stringify(
+      const gogApiUrl = `https://www.gog.com/games/ajax/filtered?${qs.stringify(
         params
       )}`;
 
