@@ -125,9 +125,9 @@ async function createGames(products) {
           name: product.title,
           slug: product.slug.replace(/_/g, "-"),
           price: product.price.amount,
-          release_date: new Date(
-            Number(product.globalReleaseDate) * 1000
-          ).toISOString(),
+          release_date: product.globalReleaseDate
+            ? new Date(Number(product.globalReleaseDate) * 1000).toISOString()
+            : null,
           categories: await Promise.all(
             product.genres.map((name) => getByName(name, "category"))
           ),
