@@ -124,7 +124,10 @@ async function createGames(products) {
         const game = await strapi.services.game.create({
           name: product.title,
           slug: product.slug.replace(/_/g, "-"),
-          price: product.price.amount,
+          basePrice: product.price.isDiscounted
+            ? product.price.baseAmount
+            : null,
+          price: product.isTBA ? null : product.price.amount,
           release_date: product.globalReleaseDate
             ? new Date(Number(product.globalReleaseDate) * 1000).toISOString()
             : null,
@@ -165,7 +168,9 @@ module.exports = {
 
       const {
         data: { products },
-      } = await axios.get(gogApiUrl);
+      } = await axios.get(gogApiUrl, {
+        headers: { Cookie: "gog_lc=BR_USD_en-US" },
+      });
 
       await createManyToManyData(products);
       await createGames(products);
