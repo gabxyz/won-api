@@ -34,7 +34,7 @@
     "price": {
       "type": "decimal",
       "default": 0,
-      "required": true
+      "required": false
     },
     "release_date": {
       "type": "date",
@@ -89,6 +89,9 @@
     "publisher": {
       "model": "publisher",
       "via": "games"
+    },
+    "basePrice": {
+      "type": "decimal"
     }
   }
 }
