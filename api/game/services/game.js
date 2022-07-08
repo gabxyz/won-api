@@ -127,7 +127,10 @@ async function createGames(products) {
           basePrice: product.price.isDiscounted
             ? product.price.baseAmount
             : null,
-          price: product.isTBA ? null : product.price.amount,
+          price:
+            product.isTBA || !product.globalReleaseDate
+              ? null
+              : product.price.amount,
           release_date: product.globalReleaseDate
             ? new Date(Number(product.globalReleaseDate) * 1000).toISOString()
             : null,
