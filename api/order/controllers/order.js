@@ -31,7 +31,7 @@ module.exports = {
 
     try {
       const paymentIntent = await stripe.paymentIntents.create({
-        amount: Math.round(total * 100),
+        amount: total,
         currency: "usd",
         metadata: { cart: JSON.stringify(cartGamesIds) },
         automatic_payment_methods: { enabled: true },
@@ -73,13 +73,22 @@ module.exports = {
 
     // get paymentMethod values in the front-end
     // and retrieve them here
+    let paymentInfo;
+    if (total_in_cents !== 0) {
+      try {
+        paymentInfo = await stripe.paymentMethods.retrieve(paymentMethod);
+      } catch (err) {
+        ctx.response.status = 402;
+        return { error: err.message };
+      }
+    }
 
     // save in db
     const entry = {
       total_in_cents,
       payment_intent_id: paymentIntentId,
-      card_brand: null,
-      card_last4: null,
+      card_brand: paymentInfo?.card?.brand,
+      card_last4: paymentInfo?.card?.last4,
       user: userInfo,
       games,
     };
